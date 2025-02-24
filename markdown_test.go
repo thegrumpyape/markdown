@@ -233,6 +233,24 @@ func TestMarkdownTaskList(t *testing.T) {
 	})
 }
 
+func TestMarkdownLF(t *testing.T) {
+	t.Parallel()
+
+	t.Run("success_LF()", func(t *testing.T) {
+		t.Parallel()
+
+		m := NewMarkdown(os.Stdout)
+		m.LF()
+
+		want := []string{"  "}
+		got := m.body
+
+		if diff := cmp.Diff(want, got); diff != "" {
+			t.Errorf(valueMismatchError, diff)
+		}
+	})
+}
+
 func TestSyntax(t *testing.T) {
 	t.Parallel()
 
