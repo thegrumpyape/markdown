@@ -141,6 +141,11 @@ func (m *Markdown) TaskList(set []TaskListSet) *Markdown {
 	return m
 }
 
+func (m *Markdown) LF() *Markdown {
+	m.body = append(m.body, "  ")
+	return m
+}
+
 func Link(text, url string) string {
 	return fmt.Sprintf("[%s](%s)", text, url)
 }
